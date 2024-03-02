@@ -3,9 +3,19 @@ font_add("montserrat_regular", "fonts/Montserrat-Regular.ttf")
 font_add("nexa_book", "fonts/Nexa-Book.otf")
 font_add("Narkisim", "nrkis.ttf")
 font_add("Vivaldi", "VIVALDII.TTF")
-fonts <- font.files()
-
+## Local font
+fonts <- font_files()
+font_add("Matura MT Script Capitals", "MATURASC.TTF")
+font_add("Narkisim", "nrkis.ttf")
+font_add("Vivaldi", "VIVALDII.TTF")
+font_add("Gabriola", "Gabriola.ttf")
+#font_add("Mesquite Std", "MesquiteStd.otf")
+font_add("Nyala", "nyala.ttf")
+font_add("Onyx", "ONYX.TTF")
+#font_add("Adobe Devanagari", "AdobeDevanagari-Bold.otf")
+font_add("Comic Sans MS", "comic.ttf")
+#font_add("Tekton Pro Cond", "TektonPro-BoldCond.otf")
+showtext_auto()
 
 showtext_opts(dpi = 300)
-showtext_auto()
 
