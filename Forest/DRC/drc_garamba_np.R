@@ -106,6 +106,7 @@ p <- ggplot(data = garamba_lc_df)+
   )
 p
 # SAVE
-showtext_opts(dpi = 300)
+showtext::showtext_opts(dpi = 300)
 if (!dir.exists("output")) {dir.create("output")}
 ggsave("output/garamba.jpeg", plot = p, width = 25, height = 28, units = "cm", dpi = 300)
+showtext::showtext_opts(dpi = 96)
