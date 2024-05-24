@@ -64,3 +64,5 @@ ggplot(data = ben_dep)+
 
 ggsave("output/prop_area_dep_benin.jpeg", width = 20, height = 20)
 
+showtext_opts(dpi = 300)
+rm(list = ls())
