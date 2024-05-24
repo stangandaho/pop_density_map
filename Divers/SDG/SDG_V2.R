@@ -1,0 +1,44 @@
+#packages loading
+library(tidyverse)
+library(ggtext)
+library(ggimage)
+
+#data creation
+source("sdg_data.R")
+
+# Set colors and fonts----
+sdg_colors <- c("#eb1b2d", "#d3a028", "#269b48", "#c31e33", "#ef402b", "#00aed9", "#fdb713", "#8f1738", "#f36d25", "#e11383", "#f99d25", "#cf8d29", "#48773e", "#007dbc", "#3db049", "#01558b", "#173668")
+#font set 
+source("fonts.R")
+
+ggplot(data = SDG_data, aes(x = sdg, y = score))+
+  geom_col(aes(fill =  sdg, color = sdg), width = 1, show.legend = FALSE, color = "white")+
+  labs(title = paste0("<p> <span style='font-family:Vivaldi; color:#3cb048;font-size:35px'>S</span>ustainable <span style='font-family:Vivaldi; color:#3cb048;font-size:35px'>D</span>evelopment <span style='font-family:Vivaldi; color:#3cb048;font-size:35px'>G</span>oal <span style='font-family:'Matura MT Script Capitals'; color:#3cb048; font-size:20px'> 15</span> </p>"),
+       caption = "<p> <span style='font-family:Nyala; color:#322e2c;font-size:14px'>Graphic :</span> <span style='font-family:Nyala; color:#ef6625;font-size:15px'> Stanislas Mahussi GANDAHO</span><br>
+       <span style='font-family:Nyala; color:#322e2c;font-size:15px'>@stangandaho | Twitter - Instagram - Linkedin</span><br></p>")+
+  geom_image(aes(image = if_else(sdg=="Life on Land", path, "./images/empty.png"), y = score - 1.33), size = 0.070, by = "width")+
+  coord_polar(direction = 1, start = 0, clip = "off")+
+  geom_image(data = data.frame(x = "Industry, Innovation, and Infrastructure",
+                               y = -2.5,
+                               z = "images/stanr.png"), aes(x = x, y = y, image = z), 
+             size = 0.20)+
+  ylim(-2.5,8.2)+
+  theme_void()+
+  scale_fill_manual(values = if_else(SDG_data$sdg=="Life on Land", sdg_colors, "#e6ddd8"))+
+  # scale_color_manual(values = if_else(SDG_data$sdg=="Life on Land", sdg_colors, "#e6ddd8"))+
+  theme(
+    plot.background = element_rect(fill = "#ffffff", colour = "NA"),
+    panel.background = element_rect(fill = "#ffffff", colour = "NA"),
+    plot.margin = margin(0,0,0,0, unit = "lines"),
+    plot.title = ggtext::element_markdown(family = "Tw Cen MT Condensed Extra Bold", colour = "#3f003d", hjust = 0.5, margin = margin(t = 1, b = 1, unit = "lines"), size = 17),
+    plot.title.position = "plot",
+    plot.caption = element_markdown(color = "#818181", 
+                                    #margin = margin(b = 12, r = 12)
+                                    ),
+    plot.caption.position = "plot"
+    
+  )
+
+ggsave("SDG2.png", dpi = 300, width = 10, height = 12, units = "cm")
+
+library(phyloseq)

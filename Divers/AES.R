@@ -18,6 +18,7 @@ pt_back <- "#9affa5"; pt_front <- "#3ddc00"
 # set font
 font_add("mb", "./fonts/Montserrat-Bold.ttf")
 font_add("mr", "./fonts/Montserrat-Regular.ttf")
+
 showtext_opts(dpi = 96)
 showtext_auto()
 font_size <- 6; font_color <- "#656565"
